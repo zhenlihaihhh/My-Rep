@@ -1,5 +1,5 @@
 #include "shared.h"
-typedef struct List{
+typedef struct{
     int size;
     int len;
     valueType* arr;
@@ -12,9 +12,9 @@ valueType get(List*, int, valueType*);
 STATUS del(List*, int);
 STATUS modify(List*, int, valueType);
 STATUS insert(List*, int, valueType);
-
 int findFirst(List*, valueType);
 void sort(List*, int, int);
+
 void copyList(List* list, int extendSize){
     int* copyArr = (valueType*)malloc(sizeof(valueType) * extendSize);
     for(int i = 0;i < list->size;++i){
@@ -24,14 +24,6 @@ void copyList(List* list, int extendSize){
     list->arr = copyArr;
     list->size = extendSize;
 }
-void list1(List* lt)
-{
-    lt = (List*)malloc(sizeof(List));
-    lt->size = 10;
-    lt->len = 0;
-    lt->arr = (valueType*)malloc(sizeof(valueType) * 10);
-}
-
 
 List* initList(int size){
     List* list = (List*)malloc(sizeof(List));
@@ -96,19 +88,15 @@ void sort(List* list, int start, int end){
     }
 }
 
-STATUS insert(List* list, int index, valueType data)
-{
-    if(index > list->len)
-    {
+STATUS insert(List* list, int index, valueType data){
+    if(index > list->len){
         perror("out of index");
         return ERROR;
     }
-    if(list->size == list->len + 1)
-    {
+    if(list->size == list->len + 1){
         copyList(list, list->size >> 1 + list->size);
     }
-    for(int i = list->len-1; i >= index; i--)
-    {
+    for(int i = list->len-1; i >= index; i--){
         list->arr[i+1] = list->arr[i];
     }
     list->arr[index] = data;
@@ -116,6 +104,7 @@ STATUS insert(List* list, int index, valueType data)
     return SUCESS;
 }
 
+// test
 // int main(){
 //     List* list = initList(10);
 //     add(list, 10);
