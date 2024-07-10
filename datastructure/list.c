@@ -1,5 +1,3 @@
-#include<stdio.h>
-#include<stdlib.h>
 #include "shared.h"
 typedef struct List{
     int size;
@@ -7,19 +5,14 @@ typedef struct List{
     valueType* arr;
 } List;
 
-// 啊
-void copyList(List* list, int extendSize);
-List* initList(int size);
-STATUS add(List* list, valueType ele);
-valueType get(List* list, int index, valueType* getValue);
-STATUS del(List* list, int index);
-STATUS modify(List* list, int index, valueType val);
-int findFirst(List* list, valueType val);
-void sort(List* list, int start, int end);
-
-
-
-
+void copyList(List*, int);
+List* initList(int);
+STATUS add(List*, valueType);
+valueType get(List*, int, valueType*);
+STATUS del(List*, int);
+STATUS modify(List*, int, valueType);
+int findFirst(List*, valueType);
+void sort(List*, int, int);
 void copyList(List* list, int extendSize){
     int* copyArr = (valueType*)malloc(sizeof(valueType) * extendSize);
     for(int i = 0;i < list->size;++i){
@@ -29,6 +22,15 @@ void copyList(List* list, int extendSize){
     list->arr = copyArr;
     list->size = extendSize;
 }
+void list1(List* lt)
+{
+    lt = (List*)malloc(sizeof(List));
+    lt->size = 10;
+    lt->len = 0;
+    lt->arr = (valueType*)malloc(sizeof(valueType) * 10);
+}
+
+
 List* initList(int size){
     List* list = (List*)malloc(sizeof(List));
     list->size = size;
@@ -91,36 +93,36 @@ void sort(List* list, int start, int end){
         sort(list, l + 1, end);
     }
 }
-
-// int main(){
-//     List* list = initList(10);
-//     add(list, 10);
-//     add(list, 9);
-//     add(list, 7);
-//     add(list, 8);
-//     add(list, 1);
-//     add(list, 3);
-//     add(list, 5);
-//     add(list, 10);
-//     add(list, 9);
-//     add(list, 7);
-//     add(list, 8);
-//     add(list, 1);
-//     add(list, 3);
-//     add(list, 5);
-//     add(list, 10);
-//     add(list, 9);
-//     add(list, 7);
-//     add(list, 8);
-//     add(list, 1);
-//     add(list, 3);
-//     add(list, 5);
-//     sort(list, 0, list->len - 1);
-//     del(list, 1);
-//     modify(list, 1, 10);
-//     for(int i = 0;i < list->len;++i){
-//         valueType getValue;
-//         get(list, i, &getValue);
-//         printf("%d ", getValue);
-//     }
-// }
+int main(){
+    List list;
+    list1(&list);
+    add(&list, 10);
+    add(&list, 9);
+    add(&list, 7);
+    // add(list, 8);
+    // add(list, 1);
+    // add(list, 3);
+    // add(list, 5);
+    // add(list, 10);
+    // add(list, 9);
+    // add(list, 7);
+    // add(list, 8);
+    // add(list, 1);
+    // add(list, 3);
+    // add(list, 5);
+    // add(list, 10);
+    // add(list, 9);
+    // add(list, 7);
+    // add(list, 8);
+    // add(list, 1);
+    // add(list, 3);
+    // add(list, 5);
+    // sort(list, 0, list->len - 1);
+    del(&list, 1);
+    // modify(list, 1, 10);
+    for(int i = 0;i < list.len;++i){
+        valueType getValue;
+        get(&list, i, &getValue);
+        printf("%d ", getValue);
+    }
+}
