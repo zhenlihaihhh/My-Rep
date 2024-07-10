@@ -7,7 +7,7 @@ typedef struct List{
     valueType* arr;
 } List;
 
-
+// 啊
 void copyList(List* list, int extendSize);
 List* initList(int size);
 STATUS add(List* list, valueType ele);
