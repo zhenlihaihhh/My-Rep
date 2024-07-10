@@ -11,6 +11,8 @@ STATUS add(List*, valueType);
 valueType get(List*, int, valueType*);
 STATUS del(List*, int);
 STATUS modify(List*, int, valueType);
+STATUS insert(List*, int, valueType);
+
 int findFirst(List*, valueType);
 void sort(List*, int, int);
 void copyList(List* list, int extendSize){
@@ -93,36 +95,57 @@ void sort(List* list, int start, int end){
         sort(list, l + 1, end);
     }
 }
-int main(){
-    List list;
-    list1(&list);
-    add(&list, 10);
-    add(&list, 9);
-    add(&list, 7);
-    // add(list, 8);
-    // add(list, 1);
-    // add(list, 3);
-    // add(list, 5);
-    // add(list, 10);
-    // add(list, 9);
-    // add(list, 7);
-    // add(list, 8);
-    // add(list, 1);
-    // add(list, 3);
-    // add(list, 5);
-    // add(list, 10);
-    // add(list, 9);
-    // add(list, 7);
-    // add(list, 8);
-    // add(list, 1);
-    // add(list, 3);
-    // add(list, 5);
-    // sort(list, 0, list->len - 1);
-    del(&list, 1);
-    // modify(list, 1, 10);
-    for(int i = 0;i < list.len;++i){
-        valueType getValue;
-        get(&list, i, &getValue);
-        printf("%d ", getValue);
+
+STATUS insert(List* list, int index, valueType data)
+{
+    if(index > list->len)
+    {
+        perror("out of index");
+        return ERROR;
     }
+    if(list->size == list->len + 1)
+    {
+        copyList(list, list->size >> 1 + list->size);
+    }
+    for(int i = list->len-1; i >= index; i--)
+    {
+        list->arr[i+1] = list->arr[i];
+    }
+    list->arr[index] = data;
+    list->len++;
+    return SUCESS;
 }
+
+// int main(){
+//     List* list = initList(10);
+//     add(list, 10);
+//     add(list, 9);
+//     add(list, 7);
+//     add(list, 8);
+//     add(list, 1);
+//     add(list, 3);
+//     add(list, 5);
+//     add(list, 10);
+//     add(list, 9);
+//     add(list, 7);
+//     add(list, 8);
+//     add(list, 1);
+//     add(list, 3);
+//     add(list, 5);
+//     add(list, 10);
+//     add(list, 9);
+//     add(list, 7);
+//     add(list, 8);
+//     add(list, 1);
+//     add(list, 3);
+//     add(list, 5);
+//     sort(list, 0, list->len - 1);
+//     del(list, 1);
+//     insert(list, 1, 78);
+//     // modify(list, 1, 10);
+//     for(int i = 0;i < list->len;++i){
+//         valueType getValue;
+//         get(list, i, &getValue);
+//         printf("%d ", getValue);
+//     }
+// }
