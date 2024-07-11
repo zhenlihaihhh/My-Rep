@@ -4,6 +4,15 @@ typedef struct LinkedList{
     struct LinkedList* next;
 } LinkedList;
 
+
+LinkedList* initLinkedList(valueType);
+void add(LinkedList*, valueType);
+void del(LinkedList*, valueType);
+STATUS delEleByPos(LinkedList*, int);
+LinkedList* reverse(LinkedList*);
+void foreachList(LinkedList*);
+
+
 LinkedList* initLinkedList(valueType val){
     LinkedList* node = (LinkedList*)malloc(sizeof(LinkedList*));
     node->val = val;
@@ -68,17 +77,17 @@ void foreachList(LinkedList* head){
 }
 
 //test
-int main(){
-    LinkedList* head = initLinkedList(1);
-    add(head, 2);
-    add(head, 3);
-    add(head, 4);
-    add(head, 5);
-    add(head, 6);
-    add(head, 7);
-    del(head, 3);
-    delEleByPos(head, 1);
-    foreachList(head);
-    head = reverse(head);
-    foreachList(head);
-}
+// int main(){
+//     LinkedList* head = initLinkedList(1);
+//     add(head, 2);
+//     add(head, 3);
+//     add(head, 4);
+//     add(head, 5);
+//     add(head, 6);
+//     add(head, 7);
+//     del(head, 3);
+//     delEleByPos(head, 1);
+//     foreachList(head);
+//     head = reverse(head);
+//     foreachList(head);
+// }

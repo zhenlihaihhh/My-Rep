@@ -3,11 +3,13 @@ typedef struct {
     valueType top;
     List* list; 
 } Stack;
+
 int isEmpty(Stack*);
 Stack* initStack(int);
 STATUS top(Stack*, valueType*);
 STATUS pop(Stack*);
 STATUS push(Stack*, valueType);
+
 int isEmpty(Stack* stack){
     if(stack->top == -1){
         return true;
