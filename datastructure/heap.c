@@ -5,6 +5,17 @@ typedef struct {
     valueType* data;
 }Heap;
 
+
+Heap* initHeap(int);
+int isEmpty(Heap*);
+void up(Heap*, int);
+void down(Heap*, int, int);
+STATUS add(Heap*, valueType);
+STATUS pop(Heap*, valueType*);
+Heap* createHeapByArray(valueType*, int);
+void printHeap(Heap* );
+
+
 Heap* initHeap(int size){
     Heap* heap = (Heap*)malloc(sizeof(Heap*));
     heap->len = 0;
