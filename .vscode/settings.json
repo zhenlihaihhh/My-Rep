@@ -2,6 +2,7 @@
     "files.associations": {
         "stdio.h": "c",
         "shared.h": "c",
-        "list": "cpp"
+        "list": "cpp",
+        "stdlib.h": "c"
     }
 }
