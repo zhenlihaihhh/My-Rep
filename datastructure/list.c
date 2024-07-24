@@ -26,7 +26,7 @@ void copyList(List* list, int extendSize){
 }
 
 List* initList(int size){
-    List* list = (List*)malloc(sizeof(List));
+    List* list = (List*)malloc(sizeof(List*));
     list->size = size;
     list->len = 0;
     list->arr = (valueType*)malloc(sizeof(valueType) * size);
