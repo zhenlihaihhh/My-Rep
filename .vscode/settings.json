@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "shared.h": "c",
         "list": "cpp",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "queue": "cpp"
     }
 }
