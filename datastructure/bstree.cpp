@@ -103,10 +103,10 @@ bool BSTree<T>::earse(T val){
         }
         node->_val = right->_val;
         if(rparent->_left == right){
-            rparent->_left = nullptr;
+            rparent->_left = right->_right;
             node = right;
         }else {
-            rparent->_right = nullptr;
+            rparent->_right = right->_right;
             node = right;
         }
     }
